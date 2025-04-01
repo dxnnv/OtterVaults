@@ -1,0 +1,19 @@
+# The maximum vault number that will be
+# checked during permission calculations.
+max_vault_count: 20
+
+# Blacklists certain items from vaults.
+item_blacklist:
+
+  #Toggles all options in this section.
+  enabled: false
+
+  # Any items matching materials below
+  # will be blacklisted from vaults.
+  materials:
+    - "AIR"
+
+  # Any items with enchantments listed
+  # below will be blacklisted from vaults.
+  enchantments:
+    - "VANISHING_CURSE"
