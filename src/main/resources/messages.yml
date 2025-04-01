@@ -1,0 +1,26 @@
+generic:
+  prefix: "<#26de7f><b>VAULTS</b> <dark_gray>» <reset>"
+  debug: "<#FF0000><b>DEBUG<reset> <gray>| <white>"
+  help:
+    player: "<red>Command Usage: <white>/vaults <#>"
+    admin: "<red>Command Usage: <white>/vaults <player> <#>"
+
+error:
+  concurrent_access: "<red>This vault is currently open!"
+  player_only: "<red>This command can only be run by a player!"
+  invalid:
+    player: "<red>Player not found."
+    number: "<red>Invalid number entered."
+    vault: "<red>This vault does not exist!"
+  blacklisted_item: "<red>You are not allowed to vault this item!"
+
+permissions:
+  insufficient: "<red>No permission."
+  pv_count: "<red>You do not have access to this vault!"
+
+commands:
+  vault:
+    list: "<green>Available Vaults: <white><vaults>"
+    opening:
+      self: "<gray>Opening vault #<number>..."
+      other: "<gray>Opening <player>'s vault #<number>..."

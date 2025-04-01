@@ -1,0 +1,26 @@
+name: OtterVaults
+version: '${version}'
+main: dev.dxnny.otterVaults.OtterVaults
+api-version: '1.21'
+authors: [ dxnnv ]
+description: Proof of concept playervaults plugin for OtterSMP
+website: https://dxnny.dev
+commands:
+  vaults:
+    description: Opens a user's vault
+    usage: /vaults [player] [#]
+    aliases: [vaults, ottervaults, playervaults, pv]
+    permission: ottervaults.commands.vault.self
+permissions:
+  ottervaults.use:
+    description: Allows opening your own vaults.
+    default: true
+  ottervaults.admin:
+    description: Allows opening the vaults of other players.
+    default: op
+    children:
+      - ottervaults.use
+      - ottervaults.bypassblacklist
+  ottervaults.bypassblacklist:
+    description: Allows storing blacklisted items in vaults.
+    default: op
