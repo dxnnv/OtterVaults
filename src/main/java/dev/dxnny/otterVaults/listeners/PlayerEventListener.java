@@ -23,7 +23,6 @@ import org.bukkit.inventory.ItemStack;
 import java.util.List;
 
 import static dev.dxnny.otterVaults.OtterVaults.DATABASE;
-import static dev.dxnny.otterVaults.OtterVaults.debug;
 import static dev.dxnny.otterVaults.lang.Messages.mmSend;
 import static dev.dxnny.otterVaults.util.Permissions.hasPerm;
 
@@ -52,19 +51,15 @@ public class PlayerEventListener implements Listener {
     public void onClick(InventoryClickEvent event) {
         if (!Options.isITEM_BLACKLIST_ENABLED()) return;
 
-        debug("blacklist enabled");
         if (!(event.getWhoClicked() instanceof Player player)) return;
         boolean vaultEvent = false;
 
         for (Vault vault : vaultManager.getActiveVaultsForPlayer(player.getUniqueId())) {
             InventoryHolder eventHolder = event.getInventory().getHolder();
             InventoryHolder vaultHolder = vault.getInventory().getHolder();
-            debug("event holder: " + eventHolder);
-            debug("vault holder: " + vaultHolder);
 
             if (eventHolder == vaultHolder || eventHolder == player) {
                 vaultEvent = true;
-                debug("vault event");
                 break;
             }
         }
@@ -79,7 +74,6 @@ public class PlayerEventListener implements Listener {
 
     public void handleBlacklistedItem(Player player, InventoryClickEvent event, ItemStack itemStack) {
         if (isBlacklistedItem(itemStack)) {
-            debug("blacklisted item");
             event.setCancelled(true);
             mmSend(player, Messages.ERROR_BLACKLISTED_ITEM);
         }
@@ -96,7 +90,6 @@ public class PlayerEventListener implements Listener {
         if (!enchantBlacklist.isEmpty()){
             Registry<Enchantment> enchantRegistry = RegistryAccess.registryAccess().getRegistry(RegistryKey.ENCHANTMENT);
             for (String enchant : enchantBlacklist) {
-                debug("checking blacklist enchantment: " + enchant);
                 Enchantment enchantKey = enchantRegistry.get(NamespacedKey.minecraft(enchant.toLowerCase()));
 
                 if (enchantKey == null) continue;
